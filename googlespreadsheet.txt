@@ -1,0 +1,125 @@
+#
+#
+#
+#
+-----------------------------------------------------
+
+Zeit eintragen bei einem einfügen von daten:
+
+function onEdit() {
+  var s = SpreadsheetApp.getActiveSheet();
+  if( s.getName() == "Keywords" ) { //checks that we're on the correct sheet
+    var r = s.getActiveCell();
+    if( r.getColumn() == 5 ) { //checks the column
+      var nextCell = r.offset(0, 1);
+      if( nextCell.getValue() === '' ) //is empty?
+        nextCell.setValue(new Date());
+    }
+  }
+}
+
+------------------------------------------------------------------
+# Neu - Datum per konopf einfügen:
+
+function onOpen() {
+  var ui = SpreadsheetApp.getUi();
+  // Or DocumentApp or FormApp.
+  ui.createMenu('Zeit/Datum')
+      .addItem('Datum', 'insertTimestamp')
+      .addToUi();
+}
+
+function insertTimestamp() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var cell = ss.getActiveCell();
+
+  cell.setValue(new Date());
+  // sets the cells format to month/day/year.
+  // Remove if you want time inserted as well
+  cell.setNumberFormat("dd.MM.yyyy") 
+}
+
+function insertLink() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var cell = ss.getActiveCell();
+
+  cell.setValue('=HYPERLINK("https://docs.google.com/a/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";"Link")');
+  // sets the cells format to month/day/year.
+  // Remove if you want time inserted as well
+  //cell.setNumberFormat("dd.MM.yyyy") 
+}
+
+------------------------------------------------------------------------------------------------------------
+function onEdit() {
+  var s = SpreadsheetApp.getActiveSheet();
+  if( s.getName() == "Keywords") { //checks that we're on the correct sheet
+    var r = s.getActiveCell();
+    if( r.getColumn() == 4 ) { //checks the column
+      var nextCell = r.offset(0, 1);
+      if( nextCell.getValue() === '' ) //is empty?
+        nextCell.setValue(new Date());
+    }
+  }
+}
+
+
+// das habe ich probiert geht aber nicht - ich habe keine Ahnung warum. 
+
+function url_domain(data) {
+  var    a      = document.createElement('a');
+         a.href = data;
+  return a.hostname;
+}
+
+
+// Das hier funktioniert  100% 
+function extractDomain(url) {
+    var domain;
+    //find & remove protocol (http, ftp, etc.) and get domain
+    if (url.indexOf("://") > -1) {
+        domain = url.split('/')[2];
+    }
+    else {
+        domain = url.split('/')[0];
+    }
+
+    //find & remove port number
+    domain = domain.split(':')[0];
+
+    return domain;
+}
+
+
+------------------------------------------------------------------
+|  ____|         | |  | | (_)                                            / ____\ \    / (_) |      | (_)  _      \ \ 
+ | |__ _   _ _ __ | | _| |_ _  ___  _ __   ___ _ __   __   _____  _ __   | |  __ \ \  / / _| |_ __ _| |_  (_)______| |
+ |  __| | | | '_ \| |/ / __| |/ _ \| '_ \ / _ \ '_ \  \ \ / / _ \| '_ \  | | |_ | \ \/ / | | __/ _` | | |   |______| |
+ | |  | |_| | | | |   <| |_| | (_) | | | |  __/ | | |  \ V / (_) | | | | | |__| |  \  /  | | || (_| | | |  _       | |
+ |_|   \__,_|_| |_|_|\_\\__|_|\___/|_| |_|\___|_| |_|   \_/ \___/|_| |_|  \_____|   \/   |_|\__\__,_|_|_| (_)      | |
+                                                                                                                  /_/ 
+-----------------------------------------------------------------------------------------------------------------------
+
+ISTEXT = Überprüft ob ein Wert ein Text ist. 
+
+z.B. 
+ISTEXT(A2) 
+ISTEXT("Maus")
+
+Rückgabewert ist TRUE wenn der rückgabewert auch ein Text ist. 
+
+Diese Funktion wird meistens in Verbindung mit IF-Bedingungsanweisung verwendet. 
+Achtung: ISTEXT("") liefert TRUE, obwohl kein Text vorhanden ist und der Wert eigendlich FALSE ist. 
+
+                                                                                                                      
+TRUE 	= ISTEXT("Vitali")
+FALSE 	= ISTEXT(2.76) 
+FALSE	= ISTEXT(TRUE)
+FALSE	= ISTEXT(#N/A)
+	
+
+
+---------------------------------------------
+Import aus dem andrem Blatt einfach folgendes eingeben. 
+
+=BestellungenMitPositionenMaerz!E14
+
