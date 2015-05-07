@@ -1,0 +1,25 @@
+function onEdit(e) {
+  var sheet = SpreadsheetApp.getActiveSheet(),
+      //address = sheet.getRange("E10").getValue(),
+  //editedCell = sheet.getActiveCell();
+
+        //msg = sheet.getRange(15,4).getValue();
+  
+   msg15 = sheet.getRange(15,3).getValue();
+   msg16 = sheet.getRange(16,3).getValue();
+   msg17 = sheet.getRange(17,3).getValue();
+   msg18 = sheet.getRange(18,3).getValue();
+   msg19 = sheet.getRange(19,3).getValue();
+   msg20 = sheet.getRange(20,3).getValue();
+  
+  
+
+  
+     if (sheet.getRange("D15").getValue() === "Vitali") {      MailApp.sendEmail("meine@email.com", "Kunde Task", msg15); }
+else if (sheet.getRange("D15").getValue() === "Mike") {        MailApp.sendEmail("meine@email.com", "Kunde Task", msg15);  }
+else if (sheet.getRange("D15").getValue() === "Tom") {         MailApp.sendEmail("meine@email.com", "Kunde Task", msg15);  } 
+
+  
+  else {    }
+}  
+  
